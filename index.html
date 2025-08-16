@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Professional Demo - Eerste 100 Dagen Plan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-compact">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-brand">
+                    <img src="logo.png" alt="Company Logo" class="header-logo">
+                    <h1 class="header-title-compact">AI Professional Demo</h1>
+                </div>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+            <nav class="navigation-compact" id="navigation">
+                <ul class="nav-list-compact">
+                    <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                    <li><a href="#chatbot" class="nav-link">Mag ik dit?</a></li>
+                    <li><a href="#game" class="nav-link">AI Game</a></li>
+                    <li><a href="#tools" class="nav-link">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Project Dashboard Section -->
+            <section id="dashboard" class="section active">
+                
+                <!-- Summary Cards - 4 Impact Categorieën -->
+                <div class="dashboard-summary">
+                    <div class="summary-card kosten-category">
+                        <div class="summary-icon">💰</div>
+                        <div class="summary-content">
+                            <div class="summary-value">€400k</div>
+                            <div class="summary-label">Kosten Besparing</div>
+                            <div class="summary-detail">Jaarlijks minder uitgaven</div>
+                        </div>
+                    </div>
+                    <div class="summary-card tijd-category">
+                        <div class="summary-icon">⏱️</div>
+                        <div class="summary-content">
+                            <div class="summary-value">60%</div>
+                            <div class="summary-label">Tijd Efficiency</div>
+                            <div class="summary-detail">Gemiddelde tijdwinst</div>
+                        </div>
+                    </div>
+                    <div class="summary-card kwaliteit-category">
+                        <div class="summary-icon">🎯</div>
+                        <div class="summary-content">
+                            <div class="summary-value">85%</div>
+                            <div class="summary-label">Kwaliteit Verbetering</div>
+                            <div class="summary-detail">Minder fouten & betere output</div>
+                        </div>
+                    </div>
+                    <div class="summary-card capaciteit-category">
+                        <div class="summary-icon">📈</div>
+                        <div class="summary-content">
+                            <div class="summary-value">3x</div>
+                            <div class="summary-label">Capaciteit Uitbreiding</div>
+                            <div class="summary-detail">Meer volume & schaalbaarheid</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table View - Always Active -->
+                <div class="dashboard-content">
+                    <div class="projects-table-container">
+                        <table class="projects-table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Status</th>
+                                    <th>Investering</th>
+                                    <th>Besparing/jaar</th>
+                                    <th>Tijd Efficiency</th>
+                                    <th>Kwaliteit</th>
+                                    <th>Capaciteit</th>
+                                    <th>Timeline</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projects-table-body">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Project Details Modal -->
+                <div id="project-details-modal" class="modal hidden">
+                    <div class="modal-content large">
+                        <span class="close-modal">&times;</span>
+                        <div id="project-details-content">
+                            <!-- Project details will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chatbot Section -->
+            <section id="chatbot" class="section">
+                <div class="chatbot-layout">
+                    <!-- Left Column: Avatar & Info -->
+                    <div class="chat-left-panel">
+                        <div class="chat-header">
+                            <h2 class="chat-title">Mag ik dit?</h2>
+                            <div class="chat-info">
+                                <span class="info-icon">ℹ️</span>
+                                <div class="info-tooltip">
+                                    <strong>AI Policy Assistant</strong><br>
+                                    Vraag hier of specifiek AI gebruik toegestaan is binnen onze organisatie. 
+                                    Krijg direct antwoord op vragen over tools, data gebruik en compliance.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-avatar-section">
+                            <img src="avatar.png" alt="AI Policy Assistant" class="avatar-image-large">
+                            <h3>AI Policy Assistant</h3>
+                            <p class="avatar-description">
+                                Ik help je bij vragen over AI gebruik, data privacy, 
+                                toegestane tools en compliance binnen onze organisatie.
+                            </p>
+                            
+                          
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Chat Interface -->
+                    <div class="chat-right-panel">
+                        <div class="chat-header-bar">
+                            <div class="chat-contact-info">
+                                <div class="contact-details">
+                                    <div class="contact-name">Persoonlijk assistent van Marjolein van Erp</div>
+                                    <div class="contact-status">
+                                        <span class="status-indicator online"></span>
+                                        De beste AI specialist sollicitant • Online
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-interface">
+                            <div class="chat-messages" id="chat-messages">
+                                <!-- Chat messages will be populated by JavaScript -->
+                            </div>
+                            <div class="chat-input-container">
+                                <input type="text" id="chat-input" placeholder="Typ je vraag over AI gebruik..." class="chat-input">
+                                <button id="chat-send" class="chat-send-btn">Verstuur</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Game Section -->
+            <section id="game" class="section">
+                <h2 class="section-title">AI Bewustwording Game</h2>
+                <div class="game-container">
+                    <div class="game-content">
+                        <h3>Leer AI Concepten Spelenderwijs</h3>
+                        <p>Test je kennis over AI en leer nieuwe concepten!</p>
+                        <button id="start-game" class="game-btn">Start Game</button>
+                        <div id="game-area" class="game-area hidden">
+                            <!-- Game content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools" class="section">
+                <h2 class="section-title">AI Tools & Calculators</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>ROI Calculator</h3>
+                        <p>Bereken de return on investment voor AI projecten</p>
+                        <button class="tool-btn" onclick="openROICalculator()">Open Calculator</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Kennis Tracker</h3>
+                        <p>Houd bij hoe ik mijn AI kennis up-to-date houd</p>
+                        <button class="tool-btn" onclick="openKnowledgeTracker()">Bekijk Tracker</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Project Prioritering</h3>
+                        <p>Zie hoe ik projecten prioriteer en waardeer</p>
+                        <button class="tool-btn" onclick="openPrioritization()">Open Tool</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="roi-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>ROI Calculator</h3>
+            <div class="calculator-form">
+                <!-- Calculator form will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="knowledge-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Kennis Update Tracker</h3>
+            <div class="knowledge-content">
+                <!-- Knowledge content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="prioritization-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Project Prioritering Matrix</h3>
+            <div class="prioritization-content">
+                <!-- Prioritization content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AI Professional Demo - Sollicitatie Presentatie</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

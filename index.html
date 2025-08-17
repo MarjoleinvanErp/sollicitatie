@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Professional Demo - Eerste 100 Dagen Plan</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4BA6DF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AI@Werk Simulator">
+    <meta name="description" content="Interactieve AI-geletterdheid training voor overheidsmedewerkers volgens EU AI Act vereisten">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="logo.png">
 </head>
 <body>
     <header class="header-compact">
@@ -22,10 +37,12 @@
             </div>
             <nav class="navigation-compact" id="navigation">
                 <ul class="nav-list-compact">
-                    <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
-                    <li><a href="#chatbot" class="nav-link">Mag ik dit?</a></li>
-                    <li><a href="#game" class="nav-link">AI Game</a></li>
+                    <li><a href="#dashboard" class="nav-link active">Project Dashboard</a></li>
+                    <li><a href="#prioritering" class="nav-link">Prioritering Tool</a></li>
                     <li><a href="#tools" class="nav-link">Tools</a></li>
+                    <li><a href="#game" class="nav-link">AI Geletterdheid Game</a></li>
+                    <li><a href="#admin" class="nav-link">Game Admin</a></li>
+                    <li><a href="#chatbot" class="nav-link">Mag ik dit?</a></li>
                 </ul>
             </nav>
         </div>
@@ -141,10 +158,10 @@
                         <div class="chat-header-bar">
                             <div class="chat-contact-info">
                                 <div class="contact-details">
-                                    <div class="contact-name">Persoonlijk assistent van Marjolein van Erp</div>
+                                    <div class="contact-name">Marjolein van Erp</div>
                                     <div class="contact-status">
                                         <span class="status-indicator online"></span>
-                                        De beste AI specialist sollicitant • Online
+                                        De beste AI Specialist sollicitant • Online
                                     </div>
                                 </div>
                             </div>
@@ -162,18 +179,193 @@
                 </div>
             </section>
 
-            <!-- AI Game Section -->
+            <!-- AI Training Game Section -->
             <section id="game" class="section">
-                <h2 class="section-title">AI Bewustwording Game</h2>
-                <div class="game-container">
-                    <div class="game-content">
-                        <h3>Leer AI Concepten Spelenderwijs</h3>
-                        <p>Test je kennis over AI en leer nieuwe concepten!</p>
-                        <button id="start-game" class="game-btn">Start Game</button>
-                        <div id="game-area" class="game-area hidden">
-                            <!-- Game content will be populated by JavaScript -->
+                <div class="ai-training-container">
+                    <!-- Mock SSO Login -->
+                    <div id="sso-login" class="sso-container">
+                        <div class="sso-card">
+                            <!-- Compact Header -->
+                            <div class="compact-header">
+                                <h2 class="compact-title">AI geletterdheid</h2>
+                                <p class="compact-subtitle">AI-geletterdheid training volgens EU AI Act</p>
+                            </div>
+                            <h3>Inloggen</h3>
+                            <p>Log in met je organisatie account</p>
+                            
+                            <!-- Microsoft SSO Button -->
+                            <div class="sso-buttons">
+                                <button class="microsoft-sso-btn" onclick="loginWithMicrosoft()">
+                                    <div class="ms-logo">
+                                        <svg width="21" height="21" viewBox="0 0 21 21">
+                                            <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+                                            <rect x="12" y="1" width="9" height="9" fill="#00a4ef"/>
+                                            <rect x="1" y="12" width="9" height="9" fill="#7fba00"/>
+                                            <rect x="12" y="12" width="9" height="9" fill="#ffb900"/>
+                                        </svg>
+                                    </div>
+                                    <span>Inloggen met Microsoft</span>
+                                </button>
+                            </div>
+                            
+                            
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Main Game Area -->
+                    <div id="training-game" class="training-game hidden">
+                        <!-- User Profile Header -->
+                        <div class="user-profile-header">
+                            <div class="profile-info">
+                                <div class="profile-avatar">
+                                    <span id="profile-icon">🏛️</span>
+                                </div>
+                                <div class="profile-details">
+                                    <h3 id="profile-name">Welkom terug, Henk Handtekening</h3>
+                                </div>
+                            </div>
+                            <div class="score-tracker">
+                                <div class="score-info">
+                                    <div class="score-item">
+                                        <span class="score-label">XP</span>
+                                        <span id="current-xp" class="score-value">0</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Score</span>
+                                        <span id="current-score" class="score-value">0%</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Badges</span>
+                                        <span id="current-badges" class="score-value">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Main Layout -->
+                        <div class="game-main-layout">
+                            <!-- Left Sidebar: Progress -->
+                            <div class="progress-sidebar">
+                                <h4>Training Voortgang</h4>
+                                
+                                <div class="overall-progress">
+                                    <div class="progress-info">
+                                        <span>Totaal</span>
+                                        <span id="progress-percentage">0%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div id="progress-fill" class="progress-fill"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-list">
+                                    <div class="step-item" data-step="0">
+                                        <div class="step-number">1</div>
+                                        <div class="step-info">
+                                            <h5>Intake Assessment</h5>
+                                            <p>Personalisatie vragen</p>
+                                            <span class="step-duration">3 min</span>
+                                        </div>
+                                        <div class="step-status pending">⏳</div>
+                                    </div>
+                                    
+                                    <div class="step-item" data-step="1">
+                                        <div class="step-number">2</div>
+                                        <div class="step-info">
+                                            <h5>AI Basis Concepten</h5>
+                                            <p>Wat is AI en wat kan het?</p>
+                                            <span class="step-duration">5-7 min</span>
+                                        </div>
+                                        <div class="step-status locked">🔒</div>
+                                    </div>
+                                    
+                                    <div class="step-item" data-step="2">
+                                        <div class="step-number">3</div>
+                                        <div class="step-info">
+                                            <h5>Praktijk Scenario's</h5>
+                                            <p>Realistische werksituaties</p>
+                                            <span class="step-duration">5-7 min</span>
+                                        </div>
+                                        <div class="step-status locked">🔒</div>
+                                    </div>
+                                    
+                                    <div class="step-item" data-step="3">
+                                        <div class="step-number">4</div>
+                                        <div class="step-info">
+                                            <h5>Ethiek & Bias</h5>
+                                            <p>Verantwoord AI gebruik</p>
+                                            <span class="step-duration">5-7 min</span>
+                                        </div>
+                                        <div class="step-status locked">🔒</div>
+                                    </div>
+                                    
+                                    <div class="step-item" data-step="4">
+                                        <div class="step-number">5</div>
+                                        <div class="step-info">
+                                            <h5>EU AI Act Compliance</h5>
+                                            <p>Wetgeving en naleving</p>
+                                            <span class="step-duration">5-7 min</span>
+                                        </div>
+                                        <div class="step-status locked">🔒</div>
+                                    </div>
+                                    
+                                    <div class="step-item" data-step="5">
+                                        <div class="step-number">6</div>
+                                        <div class="step-info">
+                                            <h5>Resultaten & Certificaat</h5>
+                                            <p>Samenvatting en download</p>
+                                            <span class="step-duration">2 min</span>
+                                        </div>
+                                        <div class="step-status locked">🔒</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badges-preview">
+                                    <h5>Te behalen badges</h5>
+                                    <div class="badge-preview-list">
+                                        <div class="badge-preview" title="AI Starter">🌱</div>
+                                        <div class="badge-preview" title="AI Learner">📚</div>
+                                        <div class="badge-preview" title="AI Expert">🎓</div>
+                                        <div class="badge-preview" title="Ethiek Expert">⚖️</div>
+                                        <div class="badge-preview" title="Compliance Champion">✅</div>
+                                        <div class="badge-preview" title="Vergunning Virtuoso">🏆</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Content Area -->
+                            <div class="main-content-area">
+                                <div id="game-content" class="game-content-area">
+                                    <!-- Content will be dynamically loaded here -->
+                                </div>
+
+                                <!-- Navigation Controls -->
+                                <div class="game-navigation">
+                                    <button id="prev-btn" class="nav-btn" disabled>← Vorige</button>
+                                    <span id="step-indicator">Stap 1 van 6</span>
+                                    <button id="next-btn" class="nav-btn">Volgende →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Results Screen -->
+                    <div id="game-results" class="game-results hidden">
+                        <!-- Results content will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Prioritering Section -->
+            <section id="prioritering" class="section">
+                <h2 class="section-title">🎯 Project Prioritering Tool</h2>
+                <div class="prioritering-intro">
+                    <p>Beoordeel en prioriteer AI projecten op basis van multiple criteria</p>
+                </div>
+                <div class="prioritering-page-content">
+                    <!-- Content will be populated by JavaScript -->
                 </div>
             </section>
 
@@ -194,7 +386,231 @@
                     <div class="tool-card">
                         <h3>Project Prioritering</h3>
                         <p>Zie hoe ik projecten prioriteer en waardeer</p>
-                        <button class="tool-btn" onclick="openPrioritization()">Open Tool</button>
+                        <button class="tool-btn" onclick="showSection('prioritering')">Open Tool</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Dashboard Section -->
+            <section id="admin" class="section">
+                <div class="admin-container">
+                    <div class="admin-header">
+                        <h2>AI Training Analytics Dashboard</h2>
+                        <p>Overzicht van training voortgang en organisatie-prestaties</p>
+                    </div>
+
+                    <!-- Overview Stats -->
+                    <div class="analytics-overview">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h3 id="total-users">127</h3>
+                                <p>Actieve Gebruikers</p>
+                                <span class="stat-trend">+12% deze maand</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-content">
+                                <h3 id="completion-rate">73%</h3>
+                                <p>Gemiddelde Completie</p>
+                                <span class="stat-trend">+8% vs vorig kwartaal</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h3 id="avg-score">82%</h3>
+                                <p>Gemiddelde Score</p>
+                                <span class="stat-trend">+5% verbetering</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-content">
+                                <h3 id="certificates">94</h3>
+                                <p>Certificaten Behaald</p>
+                                <span class="stat-trend">+18 deze week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Department Performance -->
+                    <div class="admin-section">
+                        <h3>Prestaties per Afdeling</h3>
+                        <div class="department-grid">
+                            <div class="dept-card">
+                                <h4>🏛️ Ruimtelijke Ordening</h4>
+                                <div class="dept-stats">
+                                    <div class="dept-stat">
+                                        <span class="label">Deelnemers:</span>
+                                        <span class="value">23</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Gemiddelde score:</span>
+                                        <span class="value">86%</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Certificaten:</span>
+                                        <span class="value">19</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" style="width: 86%"></div>
+                                </div>
+                            </div>
+                            <div class="dept-card">
+                                <h4>📋 Beleid & Strategie</h4>
+                                <div class="dept-stats">
+                                    <div class="dept-stat">
+                                        <span class="label">Deelnemers:</span>
+                                        <span class="value">18</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Gemiddelde score:</span>
+                                        <span class="value">91%</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Certificaten:</span>
+                                        <span class="value">16</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" style="width: 91%"></div>
+                                </div>
+                            </div>
+                            <div class="dept-card">
+                                <h4>👥 Burgerservice</h4>
+                                <div class="dept-stats">
+                                    <div class="dept-stat">
+                                        <span class="label">Deelnemers:</span>
+                                        <span class="value">31</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Gemiddelde score:</span>
+                                        <span class="value">78%</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Certificaten:</span>
+                                        <span class="value">24</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div class="dept-card">
+                                <h4>💻 ICT & Digitalisering</h4>
+                                <div class="dept-stats">
+                                    <div class="dept-stat">
+                                        <span class="label">Deelnemers:</span>
+                                        <span class="value">15</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Gemiddelde score:</span>
+                                        <span class="value">94%</span>
+                                    </div>
+                                    <div class="dept-stat">
+                                        <span class="label">Certificaten:</span>
+                                        <span class="value">14</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Popular Content -->
+                    <div class="admin-section">
+                        <h3>Meest Populaire Content</h3>
+                        <div class="content-analytics">
+                            <div class="content-item">
+                                <div class="content-info">
+                                    <h4>Vergunningverlener Scenario's</h4>
+                                    <p>Praktische AI-toepassing in vergunningsprocessen</p>
+                                </div>
+                                <div class="content-stats">
+                                    <span class="completion-badge">89% completie</span>
+                                    <span class="engagement-score">4.8/5.0 ⭐</span>
+                                </div>
+                            </div>
+                            <div class="content-item">
+                                <div class="content-info">
+                                    <h4>EU AI Act Compliance</h4>
+                                    <p>Wetgeving en naleving voor overheidsorganisaties</p>
+                                </div>
+                                <div class="content-stats">
+                                    <span class="completion-badge">76% completie</span>
+                                    <span class="engagement-score">4.6/5.0 ⭐</span>
+                                </div>
+                            </div>
+                            <div class="content-item">
+                                <div class="content-info">
+                                    <h4>AI Ethiek & Bias</h4>
+                                    <p>Verantwoord gebruik van AI-systemen</p>
+                                </div>
+                                <div class="content-stats">
+                                    <span class="completion-badge">82% completie</span>
+                                    <span class="engagement-score">4.7/5.0 ⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Options -->
+                    <div class="admin-section">
+                        <h3>Data Export & Rapportage</h3>
+                        <div class="export-options">
+                            <button class="export-btn" onclick="exportAnalytics('overview')">
+                                📊 Overzicht Rapport
+                            </button>
+                            <button class="export-btn" onclick="exportAnalytics('department')">
+                                🏢 Afdeling Analyse
+                            </button>
+                            <button class="export-btn" onclick="exportAnalytics('individual')">
+                                👤 Individuele Voortgang
+                            </button>
+                            <button class="export-btn" onclick="exportAnalytics('compliance')">
+                                ✅ Compliance Rapport
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="admin-section">
+                        <h3>Recente Activiteit</h3>
+                        <div class="activity-feed">
+                            <div class="activity-item">
+                                <div class="activity-icon">🎓</div>
+                                <div class="activity-content">
+                                    <p><strong>Maria de Jong</strong> heeft de training voltooid</p>
+                                    <span class="activity-time">2 uur geleden</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🏆</div>
+                                <div class="activity-content">
+                                    <p><strong>ICT afdeling</strong> heeft 90% completie bereikt</p>
+                                    <span class="activity-time">1 dag geleden</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">📈</div>
+                                <div class="activity-content">
+                                    <p>Nieuwe score record: <strong>97%</strong> door Ahmed Hassan</p>
+                                    <span class="activity-time">2 dagen geleden</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🎯</div>
+                                <div class="activity-content">
+                                    <p>Module <strong>EU AI Act</strong> is geüpdatet</p>
+                                    <span class="activity-time">3 dagen geleden</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -222,21 +638,23 @@
         </div>
     </div>
 
-    <div id="prioritization-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>Project Prioritering Matrix</h3>
-            <div class="prioritization-content">
-                <!-- Prioritization content will be populated by JavaScript -->
-            </div>
-        </div>
-    </div>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AI Professional Demo - Sollicitatie Presentatie</p>
+            <p>&copy; 2025 AI Specialist Demo - Sollicitatie Presentatie</p>
         </div>
     </footer>
+
+    <!-- Clippy Assistant - Fixed to Viewport -->
+    <div class="clippy-fixed" id="clippy-container" style="display: none;">
+        <div class="clippy-speech-bubble" id="clippy-speech">
+            <div class="speech-content">
+                Hallo! Ik help je door deze training. Klik op mij voor een leuk AI feitje! 📎
+            </div>
+            <div class="speech-pointer-up"></div>
+        </div>
+        <div class="clippy-character" id="clippy-char">📎</div>
+    </div>
 
     <script src="script.js"></script>
 </body>

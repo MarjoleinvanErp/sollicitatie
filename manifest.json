@@ -1,0 +1,73 @@
+{
+  "name": "AI@Werk Simulator - AI Geletterdheid Training",
+  "short_name": "AI@Werk",
+  "description": "Interactieve AI-geletterdheid module volgens EU AI Act vereisten voor overheidsmedewerkers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F9FA",
+  "theme_color": "#4BA6DF",
+  "orientation": "portrait-primary",
+  "categories": ["education", "training", "government"],
+  "lang": "nl",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "750x1334", 
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "features": [
+    "offline-training",
+    "progress-tracking", 
+    "role-based-scenarios",
+    "certificate-generation"
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Training",
+      "short_name": "Training",
+      "description": "Begin AI geletterdheid training",
+      "url": "/#game",
+      "icons": [
+        {
+          "src": "logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard", 
+      "description": "Bekijk project overzicht",
+      "url": "/#dashboard",
+      "icons": [
+        {
+          "src": "logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

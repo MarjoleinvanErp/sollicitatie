@@ -89,6 +89,21 @@ const projects = [
         },
         timeline: ["Q4 2025", "Q1 2026"],
         details: "Automatische documentcontrole, compliance checking en risk assessment voor vergunningsprocessen."
+    }, 
+        {
+        id: 7,
+        title: "AI in Schulinck",
+        description: "Het gebruik van een AI chatbot in Schulinck.",
+        cost: 20000,
+        status: "active",
+        savings: {
+            kosten: "€10.000/jaar",
+            tijd: "Snellere juridische antwoorden",
+            kwaliteit: "Minder foutieve ",
+            capaciteit: "3x meer aanvragen"
+        },
+        timeline: ["Q4 2025", "Q1 2026"],
+        details: "Usecase controle."
     }
 ];
 

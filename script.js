@@ -100,7 +100,7 @@ const projects = [
             kosten: "€10.000/jaar",
             tijd: "Snellere juridische antwoorden",
             kwaliteit: "Minder foutieve ",
-            capaciteit: "3x meer aanvragen"
+            capaciteit: "Snellere doorlooptijden aanvraag"
         },
         timeline: ["Q4 2025", "Q1 2026"],
         details: "Usecase controle."
@@ -947,7 +947,7 @@ function initializeChatbot() {
 // Send message to n8n API
 async function sendToAPI(message) {
     try {
-        const response = await fetch('https://n8n.srv814968.hstgr.cloud/webhook-test/AI-uitleg', {
+        const response = await fetch('https://n8n.srv814968.hstgr.cloud/webhook/AI-uitleg', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

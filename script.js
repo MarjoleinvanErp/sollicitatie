@@ -2035,6 +2035,12 @@ let prioritizationState = {
 function initializePrioritizationPage() {
     const pageContent = document.querySelector('#prioritering .prioritering-page-content');
     
+    // Check if element exists before setting innerHTML
+    if (!pageContent) {
+        console.log('Prioritering section not found, skipping initialization');
+        return;
+    }
+    
     pageContent.innerHTML = `
         <div class="prioritization-tool">
             <div class="prioritization-main">

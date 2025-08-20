@@ -420,22 +420,7 @@ function initializePWA() {
         });
     }
     
-    // Handle PWA install prompt
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('PWA install prompt triggered');
-        e.preventDefault();
-        deferredPrompt = e;
-        showInstallButton();
-    });
-    
-    // Handle PWA install success
-    window.addEventListener('appinstalled', (evt) => {
-        console.log('PWA was installed');
-        hideInstallButton();
-        // Track installation analytics
-        trackPWAInstall();
-    });
+    // PWA install prompt removed per user request
     
     // Handle online/offline status
     window.addEventListener('online', () => {
@@ -963,6 +948,7 @@ async function sendToAPI(message) {
         }
 
         const data = await response.json();
+        console.log('N8N Response received:', data);
         
         // Remove typing indicator
         removeTypingIndicator();
@@ -971,8 +957,10 @@ async function sendToAPI(message) {
         let botResponse;
         if (Array.isArray(data) && data.length > 0 && data[0].output) {
             botResponse = data[0].output;
+            console.log('Using array output:', botResponse);
         } else {
             botResponse = data.response || data.message || data.output || 'Ik heb je vraag ontvangen, maar kan momenteel geen antwoord geven.';
+            console.log('Using fallback response:', botResponse);
         }
         addChatMessage(botResponse, 'bot');
         

@@ -57,6 +57,7 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # API source code path - optional
           output_location: "." # Built app content directory - optional
+          skip_app_build: true # Skip build process for static files
           github_id_token: ${{ steps.idtoken.outputs.result }}
           ###### End of Repository/Build Configurations ######
 

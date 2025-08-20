@@ -1,0 +1,53 @@
+name: Cleanup Submodules
+
+on:
+  workflow_dispatch: # Handmatig uitvoeren
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove submodule configuration
+        run: |
+          echo "🧹 Starting submodule cleanup..."
+          
+          # Remove .gitmodules
+          if [ -f .gitmodules ]; then
+            echo "Removing .gitmodules"
+            rm .gitmodules
+          fi
+          
+          # Remove from git index
+          git rm --cached sollicitatie 2>/dev/null || echo "No cached submodule"
+          
+          # Remove directory
+          if [ -d sollicitatie ]; then
+            echo "Removing sollicitatie directory"
+            rm -rf sollicitatie
+          fi
+          
+          # Remove from git config
+          git config --remove-section submodule.sollicitatie 2>/dev/null || echo "No config to remove"
+          
+          echo "✅ Cleanup completed"
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🧹 Remove submodule configuration"
+            git push
+            echo "✅ Changes committed and pushed"
+          fi

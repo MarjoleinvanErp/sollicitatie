@@ -967,8 +967,13 @@ async function sendToAPI(message) {
         // Remove typing indicator
         removeTypingIndicator();
         
-        // Add API response to chat
-        const botResponse = data.response || data.message || 'Ik heb je vraag ontvangen, maar kan momenteel geen antwoord geven.';
+        // Add API response to chat - handle n8n array response format
+        let botResponse;
+        if (Array.isArray(data) && data.length > 0 && data[0].output) {
+            botResponse = data[0].output;
+        } else {
+            botResponse = data.response || data.message || data.output || 'Ik heb je vraag ontvangen, maar kan momenteel geen antwoord geven.';
+        }
         addChatMessage(botResponse, 'bot');
         
     } catch (error) {

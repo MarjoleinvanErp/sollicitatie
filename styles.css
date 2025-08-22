@@ -233,21 +233,20 @@ html, body {
 
 /* Category-specific colors */
 .kosten-category {
-    border-left-color: #8FBC3B;
+    border-left-color: #3498db; /* Blauw voor kosten */
 }
 
 .tijd-category {
-    border-left-color: #4BA6DF;
+    border-left-color: #9b59b6; /* Paars voor tijd */
 }
 
 .kwaliteit-category {
-    border-left-color: #245261;
+    border-left-color: #e67e22; /* Oranje voor kwaliteit */
 }
 
 .capaciteit-category {
-    border-left-color: #FF6B6B;
+    border-left-color: #1abc9c; /* Teal voor capaciteit */
 }
-
 .summary-icon {
     font-size: 1.5rem;
     margin-right: 0.75rem;
@@ -257,23 +256,22 @@ html, body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background: rgba(75, 166, 223, 0.1);
+    background: rgba(52, 152, 219, 0.1);
 }
 
 .kosten-category .summary-icon {
-    background: rgba(143, 188, 59, 0.15);
+    background: rgba(52, 152, 219, 0.1); /* Consistent blauw */
 }
-
 .tijd-category .summary-icon {
-    background: rgba(75, 166, 223, 0.15);
+    background: rgba(155, 89, 182, 0.1); /* Paars achtergrond */
 }
 
 .kwaliteit-category .summary-icon {
-    background: rgba(36, 82, 97, 0.15);
+    background: rgba(230, 126, 34, 0.1); /* Oranje achtergrond */
 }
 
 .capaciteit-category .summary-icon {
-    background: rgba(255, 107, 107, 0.15);
+    background: rgba(26, 188, 156, 0.1); /* Teal achtergrond */
 }
 
 .summary-value {
@@ -441,26 +439,13 @@ html, body {
     padding: 0.4rem !important;
 }
 
-.kosten-cell {
-    color: #8FBC3B;
-    background: rgba(143, 188, 59, 0.1);
-}
-
-.tijd-cell {
-    color: #4BA6DF;
-    background: rgba(75, 166, 223, 0.1);
-}
-
-.kwaliteit-cell {
-    color: #245261;
-    background: rgba(36, 82, 97, 0.1);
-}
-
+.kosten-cell,
+.tijd-cell,
+.kwaliteit-cell,
 .capaciteit-cell {
-    color: #FF6B6B;
-    background: rgba(255, 107, 107, 0.1);
+    color: #000000;
+    background: rgba(0, 0, 0, 0.03);
 }
-
 .timeline-badges {
     display: flex;
     gap: 0.25rem;

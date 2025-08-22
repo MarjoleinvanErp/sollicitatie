@@ -641,7 +641,7 @@ function generateDepartmentReport(data) {
 function generateIndividualReport(data) {
     // Mock individual data
     return `Naam,Afdeling,Score,Status,Certificaat Datum
-Jan van der Berg,Ruimtelijke Ordening,86%,Voltooid,2024-01-15
+Henk Handtekening,Ruimtelijke Ordening,86%,Voltooid,2024-01-15
 Maria de Jong,Beleid & Strategie,91%,Voltooid,2024-01-14
 Ahmed Hassan,ICT & Digitalisering,97%,Voltooid,2024-01-13
 Sarah Ahmed,Burgerservice,78%,In Progress,-
@@ -1097,7 +1097,7 @@ function loginWithMicrosoft() {
         
         // Simulate successful authentication response
         const mockUserData = {
-            displayName: "Jan van der Berg",
+            displayName: "Henk Handtekening",
             jobTitle: "Vergunningverlener Bouw & Wonen",
             department: "Ruimtelijke Ordening",
             userPrincipalName: "j.vandenberg@gemeente.nl",
@@ -1308,14 +1308,8 @@ const clippyMessages = {
         "Bijna klaar met deze sectie! 💪"
     ],
     facts: [
-        "💡 AI kan 95% van standaardbrieven automatisch genereren met menselijke kwaliteit.",
-        "⚡ Machine learning modellen kunnen patronen zien die mensen over het hoofd zien.",
-        "🎯 De meest succesvolle AI-implementaties focussen op assistentie, niet vervanging.",
-        "🔍 Computer vision kan tekeningen controleren in seconden in plaats van uren.",
-        "📊 Predictive analytics kan helpen inschatten welke aanvragen complex worden.",
-        "🤝 Hybrid intelligence (mens + AI) presteert beter dan beide apart.",
-        "🔒 Privacy by design is essentieel bij AI in de publieke sector.",
-        "⚖️ De EU AI Act classificeert overheids-AI meestal als 'hoog risico'."
+        "💡 Marjolein is de beste AI specialist sollicitant! 🌟",
+        "⚖️ Gemeente Meierijstad heeft GAIMS als interne chatbot."
     ]
 };
 

@@ -614,7 +614,7 @@ Gegenereerd op: ${new Date().toLocaleDateString('nl-NL')}
 
 Organisatie Statistieken:
 Totaal Actieve Gebruikers: ${data.overview.totalUsers}
-Gemiddelde Completie Rate: ${data.overview.completionRate}%
+Gemiddelde Complete Rate: ${data.overview.completionRate}%
 Gemiddelde Score: ${data.overview.avgScore}%
 Totaal Certificaten: ${data.overview.certificates}
 
@@ -625,12 +625,12 @@ ${data.departments.map(dept =>
 
 Module Populariteit:
 ${data.modules.map(module => 
-    `${module.name}: ${module.completion}% completie, ${module.rating}/5.0 rating`
+    `${module.name}: ${module.completion}% compleet, ${module.rating}/5.0 rating`
 ).join('\n')}`;
 }
 
 function generateDepartmentReport(data) {
-    let csv = 'Afdeling,Aantal Gebruikers,Gemiddelde Score,Certificaten Behaald,Completie Rate\n';
+    let csv = 'Afdeling,Aantal Gebruikers,Gemiddelde Score,Certificaten Behaald,Compleet Rate\n';
     data.departments.forEach(dept => {
         const completionRate = Math.round((dept.certificates / dept.users) * 100);
         csv += `${dept.name},${dept.users},${dept.avgScore}%,${dept.certificates},${completionRate}%\n`;
